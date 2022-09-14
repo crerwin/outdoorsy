@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/crerwin/outdoorsy/pkg/cmd"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -13,5 +14,5 @@ func main() {
 	log.SetLevel(log.InfoLevel)
 	log.Debug("Debug logging is on.")
 
-	// cmd.Execute()
+	cmd.Execute()
 }
