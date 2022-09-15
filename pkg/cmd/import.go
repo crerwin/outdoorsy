@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/crerwin/outdoorsy/pkg/outdoorsy"
 	"github.com/spf13/cobra"
 )
@@ -15,5 +13,6 @@ var importCmd = &cobra.Command{
 }
 
 func importRun(cmd *cobra.Command, args []string) {
-	fmt.Println(string(outdoorsy.ReadFiles(args)))
+	customers := outdoorsy.LoadFiles((args))
+	outputCustomers(customers)
 }

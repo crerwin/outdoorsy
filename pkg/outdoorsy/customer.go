@@ -1,18 +1,18 @@
 package outdoorsy
 
 type Customer struct {
-	firstName string
-	lastName  string
-	email     string
-	vehicle   *Vehicle
+	FirstName string
+	LastName  string
+	Email     string
+	Vehicle   *Vehicle
 }
 
 func newCustomer(firstName string, lastName string, email string, vehicle *Vehicle) *Customer {
 	c := new(Customer)
-	c.firstName = firstName
-	c.lastName = lastName
-	c.email = email
-	c.vehicle = vehicle
+	c.FirstName = firstName
+	c.LastName = lastName
+	c.Email = email
+	c.Vehicle = vehicle
 
 	return c
 }

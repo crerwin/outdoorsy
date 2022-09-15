@@ -1,16 +1,16 @@
 package outdoorsy
 
 type Vehicle struct {
-	name        string
-	vehicleType string
-	length      int
+	Name        string
+	VehicleType string
+	Length      int
 }
 
 func newVehicle(name string, vehicleType string, length int) *Vehicle {
 	v := new(Vehicle)
-	v.name = name
-	v.vehicleType = vehicleType
-	v.length = length
+	v.Name = name
+	v.VehicleType = vehicleType
+	v.Length = length
 
 	return v
 }

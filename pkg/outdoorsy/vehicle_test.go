@@ -4,19 +4,19 @@ import "testing"
 
 func TestNewVehicle(t *testing.T) {
 	testVehicle := newVehicle("Josephine", "sailboat", 25)
-	got := testVehicle.name
+	got := testVehicle.Name
 	want := "Josephine"
 	if got != want {
 		t.Errorf("got %v, wanted %v", got, want)
 	}
 
-	got = testVehicle.vehicleType
+	got = testVehicle.VehicleType
 	want = "sailboat"
 	if got != want {
 		t.Errorf("got %v, wanted %v", got, want)
 	}
 
-	gotInt := testVehicle.length
+	gotInt := testVehicle.Length
 	wantInt := 25
 	if gotInt != wantInt {
 		t.Errorf("got %v, wanted %v", gotInt, wantInt)

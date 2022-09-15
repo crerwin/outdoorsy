@@ -18,24 +18,33 @@ func readFile(filename string) []byte {
 	return content
 }
 
-func ReadFiles(filenames []string) string {
-	var content string
-	for _, filename := range filenames {
-		content += string(readFile(filename))
-		content += "\n"
+func loadFile(filename string) []Customer {
+	var customers []Customer
+	file, err := os.Open(filename)
+	if err != nil {
+		log.Fatalf("Error opening file %v: %v", filename, err)
 	}
+	defer file.Close()
 
-	scanner := bufio.NewScanner(strings.NewReader(content))
+	scanner := bufio.NewScanner(file)
+
 	for scanner.Scan() {
-		items, err := splitRow(scanner.Text())
+		rowItems, err := splitRow(scanner.Text())
 		if err != nil {
 			log.Fatalf("Error splitting row %v: %v", scanner.Text(), err)
-		} else {
-			loadRow(items)
 		}
-
+		customers = append(customers, loadRow(rowItems))
 	}
-	return content
+	return customers
+}
+
+func LoadFiles(filenames []string) []Customer {
+	var customers []Customer
+	for _, filename := range filenames {
+		customers = append(customers, loadFile(filename)...)
+	}
+
+	return customers
 }
 
 func splitRow(row string) ([]string, error) {
