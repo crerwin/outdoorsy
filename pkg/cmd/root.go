@@ -7,13 +7,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "outdoorsy",
-	Short: "Outdoor.sy CLI",
-	Long:  "Load and print data or serve the Outdoor.sy API",
-}
+var (
+	sort    bool
+	sortBy  string
+	rootCmd = &cobra.Command{
+		Use:   "outdoorsy",
+		Short: "Outdoor.sy CLI",
+		Long:  "Load and print data or serve the Outdoor.sy API",
+	}
+)
 
 func init() {
+	importCmd.Flags().BoolVarP(&sort, "sort", "s", false, "Sort customer list")
+	importCmd.Flags().StringVarP(&sortBy, "sort-by", "b", "name", "Field by which to sort customer list (name|vehicle-type)")
+
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(importCmd)
 }

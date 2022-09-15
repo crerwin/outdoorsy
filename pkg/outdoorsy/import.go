@@ -18,8 +18,7 @@ func readFile(filename string) []byte {
 	return content
 }
 
-func loadFile(filename string) []Customer {
-	var customers []Customer
+func loadFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatalf("Error opening file %v: %v", filename, err)
@@ -33,15 +32,14 @@ func loadFile(filename string) []Customer {
 		if err != nil {
 			log.Fatalf("Error splitting row %v: %v", scanner.Text(), err)
 		}
-		customers = append(customers, loadRow(rowItems))
+		OutdoorsyCustomers.addCustomer(loadRow(rowItems))
 	}
-	return customers
 }
 
 func LoadFiles(filenames []string) []Customer {
 	var customers []Customer
 	for _, filename := range filenames {
-		customers = append(customers, loadFile(filename)...)
+		loadFile(filename)
 	}
 
 	return customers

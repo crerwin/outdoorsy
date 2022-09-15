@@ -6,8 +6,11 @@ import (
 	"github.com/crerwin/outdoorsy/pkg/outdoorsy"
 )
 
-func outputCustomers(customers []outdoorsy.Customer) {
-	for _, customer := range customers {
+func outputCustomers(customers outdoorsy.CustomerList, sort bool, sortBy string) {
+	if sort {
+		customers.Sort(sortBy)
+	}
+	for _, customer := range customers.Customers {
 		outputCustomer(customer)
 	}
 }

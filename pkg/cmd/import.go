@@ -13,6 +13,6 @@ var importCmd = &cobra.Command{
 }
 
 func importRun(cmd *cobra.Command, args []string) {
-	customers := outdoorsy.LoadFiles((args))
-	outputCustomers(customers)
+	outdoorsy.LoadFiles((args))
+	outputCustomers(outdoorsy.OutdoorsyCustomers, sort, sortBy)
 }
