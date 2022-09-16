@@ -16,6 +16,8 @@ func (cl *CustomerList) addCustomer(customer Customer) {
 	cl.Customers = append(cl.Customers, customer)
 }
 
+// Sort sorts the slice of Customer objects within the CustomerList by the
+// specified sortBy field.
 func (cl *CustomerList) Sort(sortBy string) {
 	// TODO: unit test this
 	fmt.Println(sortBy)
