@@ -12,7 +12,6 @@ func main() {
 	log.SetFormatter(odsFormatter)
 
 	log.SetLevel(log.InfoLevel)
-	log.Debug("Debug logging is on.")
 
 	cmd.Execute()
 }

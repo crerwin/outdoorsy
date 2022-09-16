@@ -1,16 +1,17 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 
 	"github.com/crerwin/outdoorsy/pkg/outdoorsy"
 	"github.com/olekukonko/tablewriter"
+	log "github.com/sirupsen/logrus"
 )
 
 func outputCustomers(customers outdoorsy.CustomerList, sort bool, sortBy string) {
 	if sort {
+		log.Debug("Sort flag set - sorting customers")
 		customers.Sort(sortBy)
 	}
 
@@ -33,15 +34,4 @@ func customerToStrings(customer outdoorsy.Customer) []string {
 		customer.Vehicle.Name,
 		strconv.Itoa(customer.Vehicle.Length),
 	}
-}
-
-func outputCustomer(customer outdoorsy.Customer) {
-	fmt.Println(
-		customer.FirstName,
-		customer.LastName,
-		customer.Email,
-		customer.Vehicle.VehicleType,
-		customer.Vehicle.Name,
-		customer.Vehicle.Length,
-	)
 }

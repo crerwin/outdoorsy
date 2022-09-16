@@ -89,6 +89,8 @@ func processLength(lengthString string) int {
 		length, err = strconv.Atoi(lengthString[:len(lengthString)-1])
 	} else if strings.HasSuffix(lengthString, "’") {
 		// 32’
+		log.Debug("Dealing with unicode character in vehicle length")
+
 		runes := []rune(lengthString)
 		length, err = strconv.Atoi(string(runes[:len(runes)-1]))
 	} else if strings.HasSuffix(lengthString, " feet") {
