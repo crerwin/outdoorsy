@@ -92,6 +92,6 @@ outdoorsy-windows-amd64.exe
 
 ## Stretch Goals
 - State - keep customers in a database so we don't have to keep loading files every time
-- Outdoor.sy API - `/customers` to get customers, maybe with a `sort` parameter
+- Outdoor.sy API - `/customers` to get customers, maybe with a `sort` parameter.  `/upload` enpoint allowing uploading of files.
 - Front end - Display customers and at that point the sorting might as well happen on the front end.
 - Deployments - build containers, deploy to Kubernetes or wherever.  Smoke test in between environments.  Deploy MRs to their own namespace.
