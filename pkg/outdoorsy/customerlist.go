@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type CustomerList struct {
@@ -32,5 +34,7 @@ func (cl *CustomerList) Sort(sortBy string) {
 			return (strings.ToLower(cl.Customers[i].Vehicle.VehicleType) <
 				strings.ToLower(cl.Customers[j].Vehicle.VehicleType))
 		})
+	} else {
+		log.Fatalf("Invalid --sort-by: %v", sortBy)
 	}
 }
