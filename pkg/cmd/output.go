@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 
@@ -23,6 +24,8 @@ func outputCustomers(customers outdoorsy.CustomerList, sort bool, sortBy string)
 		table.Append(customerToStrings(customer))
 	}
 	table.Render()
+
+	fmt.Printf("Total customer records: %v\n", len(customers.Customers))
 }
 
 // maybe this should live inside the outdoorsy package?

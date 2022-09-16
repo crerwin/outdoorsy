@@ -46,6 +46,7 @@ func TestProcessLength(t *testing.T) {
 		lengthString string
 		want         int
 	}{
+		{"32", 32},
 		{"32'", 32},
 		{"32’", 32},
 		{"28 feet", 28},

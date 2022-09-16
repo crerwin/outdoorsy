@@ -84,7 +84,10 @@ func processLength(lengthString string) int {
 	var length int
 	var err error
 
-	if strings.HasSuffix(lengthString, "'") {
+	if _, err2 := strconv.Atoi(lengthString); err2 == nil {
+		// 32
+		length, err = strconv.Atoi(lengthString)
+	} else if strings.HasSuffix(lengthString, "'") {
 		// 32'
 		length, err = strconv.Atoi(lengthString[:len(lengthString)-1])
 	} else if strings.HasSuffix(lengthString, "’") {
