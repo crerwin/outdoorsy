@@ -1,5 +1,7 @@
 # Outdoor.sy
 
+![Build](https://github.com/crerwin/outdoorsy/actions/workflows/build.yaml/badge.svg)
+
 ## Running the code
 If you have go >= 1.18 installed, you can run the code like so:
 ```
