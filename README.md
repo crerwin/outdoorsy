@@ -14,7 +14,7 @@ If you don't have Go installed you can use Docker instead:
 $ docker build . -t outdoorsy
 $ docker run outdoorsy
 ```
-If you are using docker, add `docker run` before any example commands.  Note that the input files are build into the docker image under `/data`.  If you want to supply your own data, you'll have to map it to a volume in the container.  Example:
+If you are using docker, add `docker run` before any example commands.  Note that the input files are built into the docker image under `/data`.  If you want to supply your own data, you'll have to map it to a volume in the container.  Example:
 
 ```
 $ docker run -v $(pwd)/data:/data outdoorsy import data/commas.txt
@@ -22,7 +22,25 @@ $ docker run -v $(pwd)/data:/data outdoorsy import data/commas.txt
 
 ## The Outdoor.sy CLI
 
-`outdoorsy` has subcommands, and the `import` command fulfills the requirements of the challenge.  The CLI executes in a single run - the `import` command imports the specified files and outputs the data as requested.  State is not saved between runs, so you must specify all applicable input files each time the command is run.  The provided input files are checked in under `data/` and can be specified as arguments:
+For help on running the `outdoorsy` cli, simply run it:
+```
+$ outdoorsy
+
+or 
+
+$ outdoorsy help
+```
+
+`outdoorsy` has subcommands, and the `import` command fulfills the requirements of the challenge.  For help on the `import` command, run it:
+```
+$ outdoorsy import
+
+or 
+
+$ outdoorsy help import
+```
+
+The CLI executes in a single run - the `import` command imports the specified files and outputs the data as requested.  State is not saved between runs, so you must specify all applicable input files each time the command is run.  The provided input files are checked in under `data/` and can be specified as arguments:
 
 ```
 $ outdoorsy import data/commas.txt
@@ -57,9 +75,15 @@ $ outdoorsy import much_longer_test_data.txt
 
 ## Sorting data
 
-In order to sort the data, add the `--sort` flag (or `-s`).  By default, the customers are sorted by full name (see assumptions).  To sort by vehicle type, add `--sort-by=vehicle-type` (or `-b=vehicle-type`).
+In order to sort the data, add the `--sort` flag (or `-s`).  
 ```
-outdoorsy import data/commas.txt --sort --sort-by=vehicle-type
+$ outdoorsy import data/commas.txt --sort
+```
+By default, the customers are sorted by full name (see assumptions).  To sort by vehicle type, add `--sort-by=vehicle-type` (or `-b=vehicle-type`).
+```
+$ outdoorsy import data/commas.txt --sort --sort-by=vehicle-type
+$ outdoorsy import data/commas.txt data/pipes.txt --sort --sort-by=vehicle-type
+$ outdoorsy import data/* --sort --sort-by=vehicle-type
 ```
 
 # Assumptions
