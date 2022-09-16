@@ -40,3 +40,22 @@ func TestSplitRowBadData(t *testing.T) {
 		}
 	}
 }
+
+func TestProcessLength(t *testing.T) {
+	cases := []struct {
+		lengthString string
+		want         int
+	}{
+		{"32'", 32},
+		{"32’", 32},
+		{"28 feet", 28},
+		{"40 ft", 40},
+	}
+
+	for _, c := range cases {
+		got := processLength(c.lengthString)
+		if got != c.want {
+			t.Errorf("Got %v from processLength(%v) but expected %v", got, c.lengthString, c.want)
+		}
+	}
+}

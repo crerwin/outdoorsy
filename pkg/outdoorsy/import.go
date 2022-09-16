@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"errors"
 	"os"
+	"strconv"
 	"strings"
 
 	log "github.com/sirupsen/logrus"
@@ -71,10 +72,38 @@ func loadRow(items []string) Customer {
 	email := items[2]
 	vehicleType := items[3]
 	vehicleName := items[4]
-	vehicleLength := 5
+	vehicleLength := processLength(items[5])
 	return *newCustomer(
 		firstName, lastName, email, newVehicle(
 			vehicleName, vehicleType, vehicleLength,
 		),
 	)
+}
+
+func processLength(lengthString string) int {
+	var length int
+	var err error
+
+	if strings.HasSuffix(lengthString, "'") {
+		// 32'
+		length, err = strconv.Atoi(lengthString[:len(lengthString)-1])
+	} else if strings.HasSuffix(lengthString, "’") {
+		// 32’
+		runes := []rune(lengthString)
+		length, err = strconv.Atoi(string(runes[:len(runes)-1]))
+	} else if strings.HasSuffix(lengthString, " feet") {
+		// 32 feet
+		length, err = strconv.Atoi(lengthString[:len(lengthString)-5])
+	} else if strings.HasSuffix(lengthString, " ft") {
+		// 32 ft
+		length, err = strconv.Atoi(lengthString[:len(lengthString)-3])
+	} else {
+		log.Fatalf("Unexpected vehicle length format: %v", lengthString)
+	}
+
+	if err != nil {
+		log.Fatalf("Error getting integer from %v: %v", lengthString, err)
+	}
+
+	return length
 }
