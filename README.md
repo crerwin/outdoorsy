@@ -108,6 +108,16 @@ outdoorsy-windows-amd64.exe
 ```
 ![pipeline](doc/pipeline.png?raw=true "Pipeline")
 
+# Ruby version
+I've added a very basic dirty Ruby script as a way of refreshing myself with Ruby syntax and RSpec.  It is found inside the `ruby/` folder. 
+
+```
+bundle install
+bundle exec ruby outdoorsy.rb ../data/commas.txt
+bundle exec ruby outdoorsy.rb ../data/commas.txt -n # (sort by name)
+bundle exec ruby outdoorsy.rb ../data/commas.txt -t # (sort by vehicle type)
+```
+
 # What I'd do with more time!
 
 ## A few low-hanging fruits:
