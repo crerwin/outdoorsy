@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-ruby@v1
-        working-directory: ruby
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.1.2"
           bundler-cache: true
+          working-directory: "ruby"
       - name: rubocop
         working-directory: ruby
         run: bundle exec rubocop
